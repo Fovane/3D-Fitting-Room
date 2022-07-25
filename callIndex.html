@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Fitting Room Project</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+    <link rel="stylesheet" href="callCSS.css">
+</head>
+<body>
+    <div id="license-panel" class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="row d-flex flex-column justify-content-around align-items-around" style="height: 50%; width: 50%;">
+            <h1 class="text-center" style="width: 100%;">3D Fitting Room V0.1</h1>
+            <h3 class="text-center" style="width: 100%;">Lisans Anahtarını Giriniz</h3>
+            <input id="license-input" placeholder="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" style="width: 100%">
+            <button id="license-button" type="button" class="btn btn-primary" style="width: 100%;">Gönder</button>
+        </div>
+    </div>
+
+
+    <div id="main-div" class="container-fluid" style="display: none;">
+        <div id="3d-div" style="height: 60%;" class="row">
+            <!--3D Section-->
+        </div>
+        <div id="content-div" style="height: 40%;" class="row">
+            <div id="measurements-div" class="col">
+                <!--User Gender Selection Panel - Start-->
+                <div id="gender-selection-div" class="row" style="height: 100%;">
+                    <div class="text-center" style="height: 10%; width: 100%;">
+                        <i><h6>Cinsiyetinizi Seçiniz</h6></i>
+                    </div>
+                    <div class="d-flex justify-content-around align-items-center" style="height: 90%; width: 100%;">
+                        <button id="erkek-button" class="btn btn-primary" type="button">Erkek</button>
+                        <button id="kadın-button" class="btn btn-primary" type="button">Kadın</button>
+                    </div>
+                </div>
+                <!--User Gender Selection Panel - End-->
+
+                <!--When User Selected Erkek - Start-->
+                <form id="e-model-form">
+                    <div class="row mt-2">
+                        <label for="e-model-height" class="col-4 col-form-label">Boy: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="e-model-height" fname="e-model-height" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="e-model-gogus" class="col-4 col-form-label">Göğüs: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="e-model-gogus" fname="e-model-gogus" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="e-model-bel" class="col-4 col-form-label">Bel: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="e-model-bel" fname="e-model-bel" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="e-model-basen" class="col-4 col-form-label">Basen: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="e-model-basen" fname="e-model-basen" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="e-model-icboy" class="col-4 col-form-label">Bacak: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="e-model-icboy" fname="e-model-icboy" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="d-flex justify-content-around align-items-center col-12">
+                            <button id="e-back-to-gender-selection-button" class="btn btn-primary" type="button">Geri Dön</button>
+                            <button id="e-calculate-button" class="btn btn-primary" type="button">Hesapla</button>
+                        </div>
+                    </div>
+
+                </form>
+                <!--When User Selected Erkek - End-->
+
+                <!--When User Selected Kadın - Start-->
+                <form id="k-model-form">
+                    <div class="row mt-2">
+                        <label for="k-model-height" class="col-4 col-form-label">Boy: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="k-model-height" fname="k-model-height" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="k-model-gogus" class="col-4 col-form-label">Göğüs: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="k-model-gogus" fname="k-model-gogus" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="k-model-bel" class="col-4 col-form-label">Bel: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="k-model-bel" fname="k-model-bel" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label for="k-model-basen" class="col-4 col-form-label">Basen: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="k-model-basen" fname="k-model-basen" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <label id="bacak-height-label" for="k-model-icboy" class="col-4 col-form-label">Bacak: </label>
+                            <div class="col-8 d-flex justify-content-center">
+                                <input type="number" id="k-model-icboy" fname="k-model-icboy" placeholder="cm" class="col-12">
+                            </div>
+                    </div>
+
+                    <div class="row mt-1">
+                        <div class="d-flex justify-content-around align-items-center col-12">
+                            <button id="k-back-to-gender-selection-button" class="btn btn-primary" type="button">Geri Dön</button>
+                            <button id="k-calculate-button" class="btn btn-primary" type="button">Hesapla</button>
+                        </div>
+                    </div>
+                </form>
+                <!--When User Selected Kadın - End-->
+            </div>
+
+            <div id="product-div" class="col">
+                <div class="row" style="height: 100%;">
+                    <form id="product-selection-form" class="col-12 d-flex flex-column justify-content-start">
+
+                        <div class="row">
+                            <label for="brand" class="col-12 text-center"><i>Marka</i></label>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <select id="e-marka-select" class="col-10" style="padding-right: 0px;">
+                                <option value="">Marka Seçiniz</option>
+                                <option value="marka-a">Marka A</option>
+                                <option value="marka-b">Marka B</option>
+                                <option value="marka-c">Marka C</option>
+                                <option value="marka-d">Marka D</option>
+                                <option value="marka-e">Marka E</option>
+                            </select>
+                        </div>
+
+                        <div class="row mt-1">
+                            <label for="cloth" class="col-12 text-center"><i>Kıyafet</i></label>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <select id="e-kiyafet-select" class="col-10" style="padding-right: 0px;">
+                                <option value="">Kıyafet Seçiniz</option>
+                                <option id="e-tshirt" value="e-tshirt">T-Shirt</option>
+                                <option id="e-gomlek" value="e-gomlek">Gömlek</option>
+                                <option id="e-triko" value="e-triko">Triko</option>
+                                <option id="e-pantolon" value="e-pantolon">Pantolon</option>
+                                <option id="e-jean" value="e-jean">Kot</option>
+                            </select>
+                        </div>
+
+                        <div class="row mt-1">
+                            <label for="misc" class="col-12 text-center"><i>Tür</i></label>
+                        </div>
+
+                        <div class="row d-flex justify-content-center">
+                            <select id="e-kiyafet-tur-select" class="col-10" style="padding-right: 0px;">
+                                <option value="">Tür Seçiniz</option>
+                                <option id="e-skinny" value="e-skinny">Skinny</option>
+                                <option id="e-regular" value="e-regular">Regular</option>
+                                <option id="e-oversize" value="e-oversize">Oversize</option>
+                            </select>
+                        </div>
+
+                        <div id="letter-size-table" class="row justify-content-center mt-1">
+                            <div class="row" style="width: 100%;">
+                                <label for="letter-size" class="col-12 text-center"><i>Beden</i></label>
+                            </div>
+
+                            <div class="row d-flex justify-content-center" style="width: 100%;">
+                                <select id="e-letter-size-select" class="col-10" style="padding-right: 0px;">
+                                    <option value="">Beden Seçiniz</option>
+                                    <option value="xs">XS</option>
+                                    <option value="s">S</option>
+                                    <option value="m">M</option>
+                                    <option value="l">L</option>
+                                    <option value="xl">XL</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="number-size-table" class="row justify-content-center mt-1">
+                            <div class="row" style="width: 100%;">
+                                <label for="number-size" class="col-12 text-center"><i>Beden</i></label>
+                            </div>
+
+                            <div class="row d-flex justify-content-center" style="width: 100%;">
+                                <select id="e-number-size-select" class="col-10" style="padding-right: 0px;">
+                                    <option value="">Beden Seçiniz</option>
+                                    <option value="38">38</option>
+                                    <option value="40">40</option>
+                                    <option value="42">42</option>
+                                    <option value="44">44</option>
+                                    <option value="46">46</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="wardrobe-button-div" class="row d-flex justify-content-around align-items-center mb-3">
+                            <button id="wardrobe-button" class="btn btn-primary col-6" type="button">Gardrop</button>
+                            <button id="statistics-button" class="btn btn-primary col-6" type="button">İstatistik</button>
+                        </div>
+
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--2D Statistics Start-->
+
+    <div id="main-2d-div" class="container-fluid" style="height: 100vh; display: none; padding: 0;">
+        <div class="row" style="height: 50%;">
+            <div class="row col" style="height: 100%">
+                <img src="Images/2dCharacterFinal.png" class="img-fluid" alt="human-illustration" style="height: 100% !important">
+            </div>
+            <div class="row col d-flex flex-column justify-content-center" style="height: 100%">
+                <p id="2d-boy-p">A: Boy = </p>
+                <p id="2d-gogus-p">B: Göğüs = </p>
+                <p id="2d-bel-p">C: Bel = </p>
+                <p id="2d-basen-p">D: Basen = </p>
+                <p id="2d-bacak-p">E: Bacak = </p>
+            </div>
+        </div>
+        <div class="row" style="height: 50%;">
+            <div class="container-fluid">
+                <div class="row d-flex flex-column" style="height: 100%;">
+                    <div id="statistics-recommend-div" class="row d-flex flex-column" style="height: 80%;">
+                        <h3 class="ml-3 pl-4">İstatistikler</h3>
+                        <p id="2d-marka-p" class="ml-3 pl-4">Seçtiğiniz marka: </p>
+                        <p id="2d-kıyafet-p" class="ml-3 pl-4">Seçtiğiniz kıyafet: </p>
+                        <p id="2d-tur-p" class="ml-3 pl-4">Seçtiğiniz tür: </p>
+                        <p id="2d-beden-p" class="ml-3 pl-4">Seçtiğiniz beden: </p>
+                        <h6 id="2d-recommend-h" class="ml-3 pl-4 mt-3"><i>Bu Vücuda Uygun Kıyafet</i></h6>
+                        <p id="2d-recommend-p-result" class="ml-3 pl-4"></p>
+                    </div>
+
+                    <div class="row d-flex justify-content-center vertical-align-center" style="height: 20%;">
+                        <button id="2d-back-to-main-button" class="btn btn-primary" type="button" style="height: 50%;">Geri Dön</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <!--2D Statistics End-->
+
+    <!-- Wardrobe Start-->
+
+    <div id="wardrobe-gender-selection-div" class="container-fluid" style="height: 100vh; display: none;">
+        <div class="text-center d-flex justify-content-center align-items-end" style="height: 10%; width: 100%;">
+            <h5>Gardroba Hoşgeldiniz <br> Lütfen Cinsiyetinizi Seçiniz</h5>
+        </div>
+
+        <div class="d-flex align-items-stretch" style="height: 90%; width: 100%;">
+            <button id="wardrobe-erkek-button" class="btn btn-primary" type="button" style="width: 100%">Erkek</button>
+            <button id="wardrobe-kadın-button" class="btn btn-primary" type="button" style="width: 100%">Kadın</button>
+        </div>
+    </div>
+
+    <div id="main-wardrobe-div">
+
+        <div id="wardrobe-container-div" class="container-fluid" style="height: 100vh;">
+
+            <div id="wardrobe-top-menu" class="row text-center d-flex justify-content-center align-items-center">
+                <div class="col-2 d-flex justify-content-center align-items-center wardrobe-menu-tabs" style="padding: 0;">
+                    <button id="wardrobe-tShirt-button" class="btn btn-primary" type="button">T-Shirt</button>
+                </div>
+
+                <div class="col-2 d-flex justify-content-center align-items-center wardrobe-menu-tabs" style="padding: 0;">
+                    <button id="wardrobe-gomlek-button" class="btn btn-primary" type="button">Gömlek</button>
+                </div>
+                
+                <div class="col-2 d-flex justify-content-center align-items-center wardrobe-menu-tabs" style="padding: 0;">
+                    <button id="wardrobe-triko-button" class="btn btn-primary" type="button">Triko</button>
+                </div>
+
+                <div class="col-2 d-flex justify-content-center align-items-center wardrobe-menu-tabs" style="padding: 0;">
+                    <button id="wardrobe-pantolon-button" class="btn btn-primary" type="button">Pantolon</button>
+                </div>
+
+                <div class="col-2 d-flex justify-content-center align-items-center wardrobe-menu-tabs" style="padding: 0;">
+                    <button id="wardrobe-kot-button" class="btn btn-primary" type="button">Kot</button>
+                </div>
+
+                <div class="col-2 d-flex justify-content-center align-items-center wardrobe-menu-tabs" style="padding: 0;">
+                    <button id="wardrobe-hepsi-button" class="btn btn-primary tab-selected" type="button">Hepsi</button>
+                </div>
+                
+            </div>
+
+            <div id="wardrobe-content-div">
+
+                <div id="wardrobe-tShirt-content-div" class="row" style="display: none;">
+                    <p>T-Shirt Section is active now.</p>
+                </div>
+
+                <div id="wardrobe-gomlek-content-div" class="row" style="display: none;">
+                    <p>Gömlek Section is active now.</p>
+                </div>
+
+                <div id="wardrobe-triko-content-div" class="row" style="display: none;">
+                    <p>Triko Section is active now.</p>
+                </div>
+
+                <div id="wardrobe-pantolon-content-div" class="row" style="display: none;">
+                    <p>Pantolon Section is active now.</p>
+                </div>
+
+                <div id="wardrobe-kot-content-div" class="row" style="display: none;">
+                    <p>Kot Section is active now.</p>
+                </div>
+
+                <div id="wardrobe-hepsi-content-div" class="row active-tab">
+                    <p>Hepsi Section is active now.</p>
+                </div>
+
+            </div>
+
+            <div id="control-wardrobe-div" class="row d-flex justify-content-around align-items-center">
+                
+                <button id="back-to-main-div" class="btn btn-primary">Gardroptan Çık</button>
+                <button id="e-wardrobe-calculate-button" class="btn btn-primary">Hesapla</button>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Wardrobe End-->
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./node_modules/three/build/three.module.js"
+            }
+        }
+    </script>
+    <script src="Enc-Fovane-Encryption.js"></script>
+    <script src="erkekModelAllVertices.js"></script>
+    <script type="module" src="callJS.js"></script>
+</body>
+</html>

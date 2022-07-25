@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+    font-family: "Quicksand";
+    overflow: hidden;
+}
+
+#license-input::-webkit-input-placeholder { font-size: 0.55rem; }
+#license-input::-moz-placeholder { font-size: 0.55rem; } /* Firefox 19+ */
+#license-input:-ms-input-placeholder { font-size: 0.55rem; } /* IE */
+#license-input:-moz-placeholder { font-size: 0.55rem; }
+
+#main-div {
+    height: 100vh;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 2px solid black;
+}
+
+label {
+    white-space: nowrap;
+    width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#e-model-form {
+    display: none;
+}
+
+.select-erkek #e-model-form {
+    display: initial;
+}
+
+#k-model-form {
+    display: none;
+}
+
+.select-kadın #k-model-form {
+    display: initial;
+}
+
+.btn {
+    white-space: nowrap;
+    color: black !important;
+    border-color : #ffaed7 !important;
+    background-color: #efe5df !important;
+
+    border: none !important;
+}
+
+.btn:focus, .btn:active {
+    outline: black solid 1px !important;
+    box-shadow: 0.5px 0.5px black !important;
+ }
+
+ .btn:hover {
+    transition: all 0.3s ease-out;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+
+    background-color: #2f4858 !important;
+    color: white !important;
+ }
+
+ #content-div {
+     border-top: 1px solid black;
+ }
+
+ #measurements-div {
+     border-right: 1px solid black;
+ }
+
+ #product-selection-form label {
+    margin-bottom: 0px;
+ }
+
+ #letter-size-table {
+     display: none;
+ }
+
+ #number-size-table {
+     display: none;
+ }
+
+ #wardrobe-button-div {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+/* Wardrobe Section */
+
+#main-wardrobe-div {
+    display: none;
+}
+
+#wardrobe-container-div {
+    border: 1px solid black;
+}
+
+#wardrobe-top-menu {
+    height: 5%;
+    border-bottom: 1px solid black;
+
+    background-color: #efe5df;
+}
+
+#wardrobe-top-menu button {
+    border-radius: 0px !important;
+}
+
+#wardrobe-content-div {
+    height: 90%;
+}
+
+#wardrobe-hepsi-button {
+    background-color: #2f4858 !important;
+    color: white !important;
+}
+
+#control-wardrobe-div {
+    height: 5%;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.wardrobe-menu-tabs {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wardrobe-menu-tabs .btn {
+    font-size: 0.9rem !important;
+}
+
+.wardrobe-menu-tabs .btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#wardrobe-top-menu button {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#control-wardrobe-div button {
+    line-height: 1.25rem;
+}
+
+#main-2d-div {
+    border: 1px solid black;
+    border-bottom: 2px solid black;
+}
+
+#statistics-recommend-div p {
+    margin-bottom: 0.1rem !important;
+}
+
+#statistics-recommend-div h3 {
+    font-weight: 600;
+}
+
+#statistics-recommend-div h6 {
+    font-weight: bolder;
+}
